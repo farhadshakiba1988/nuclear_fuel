@@ -1,0 +1,255 @@
+<!-- Modal Structure -->
+<div class="modal fade" id="dataEntryModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Enter Receipt Data</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+
+                <!-- Column 1 -->
+                <div>
+                    <label for="MBA" class="form-label">MBA</label>
+                    <select class="form-select" id="MBA">
+                        <option value="IR1B">IR1B</option>
+                        <!-- Other MBA choices -->
+                    </select>
+                </div>
+
+                <div>
+                    <label for="item_id" class="form-label">Item ID</label>
+                    <input type="text" class="form-control" id="item_id" placeholder="Enter Item ID">
+                </div>
+
+                <div>
+                    <label for="container_id" class="form-label">Container ID</label>
+                    <input type="text" class="form-control" id="container_id" placeholder="Enter Container ID">
+                </div>
+
+                <div>
+                    <label for="ic_date" class="form-label">IC Date</label>
+                    <input type="date" class="form-control" id="ic_date">
+                </div>
+
+                <div>
+                    <label for="ic_code" class="form-label">IC Code</label>
+                    <select class="form-select" id="ic_code">
+                        <option value="DI">DI</option>
+                        <option value="FW">FW</option>
+                        <option value="GA">GA</option>
+                        <!-- Other IC Code choices -->
+                    </select>
+                </div>
+
+                <div>
+                    <label for="from_mba" class="form-label">From MBA</label>
+                    <select class="form-select" id="from_mba">
+                        <option value="IR1B">IR1B</option>
+                        <!-- Other MBA choices -->
+                    </select>
+                </div>
+
+                <div>
+                    <label for="mdc" class="form-label">MDC</label>
+                    <select class="form-select" id="mdc">
+                        <option value="BQ1F">BQ1F</option>
+                        <option value="BQ1G">BQ1G</option>
+                        <!-- Other MDC choices -->
+                    </select>
+                </div>
+
+                <div>
+                    <label for="obl_code" class="form-label">OBL Code</label>
+                    <select class="form-select" id="obl_code">
+                        <option value="P">P</option>
+                        <!-- Other OBL Code choices -->
+                    </select>
+                </div>
+
+                <!-- Column 2 -->
+                <div>
+                    <label for="to_mba" class="form-label">To MBA</label>
+                    <select class="form-select" id="to_mba">
+                        <option value="IR1B">IR1B</option>
+                        <!-- Other MBA choices -->
+                    </select>
+                </div>
+
+                <div>
+                    <label for="no_of_items" class="form-label">No. of Items</label>
+                    <input type="number" class="form-control" id="no_of_items" placeholder="Enter No. of Items">
+                </div>
+
+                <div>
+                    <label for="elt_code" class="form-label">ELT Code</label>
+                    <select class="form-select" id="elt_code">
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                        <option value="N">N</option>
+                        <option value="P">P</option>
+                        <option value="T">T</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="uo2_wf" class="form-label">UO2 WF</label>
+                    <input type="number" class="form-control" id="uo2_wf" placeholder="Enter UO2 WF">
+                </div>
+
+                <div>
+                    <label for="elt_wf" class="form-label">ELT WF</label>
+                    <input type="number" class="form-control" id="elt_wf" placeholder="Enter ELT WF">
+                </div>
+
+                <div>
+                    <label for="enr" class="form-label">ENR</label>
+                    <input type="number" class="form-control" id="enr" placeholder="Enter ENR">
+                </div>
+
+                <div>
+                    <label for="iso_code" class="form-label">ISO Code</label>
+                    <input type="text" class="form-control" id="iso_code" placeholder="Enter ISO Code">
+                </div>
+
+                <div>
+                    <label for="iso_wf" class="form-label">ISO WF</label>
+                    <input type="number" class="form-control" id="iso_wf" placeholder="Enter ISO WF">
+                </div>
+
+                <div>
+                    <label for="burnup" class="form-label">Burnup</label>
+                    <input type="number" class="form-control" id="burnup" placeholder="Enter Burnup">
+                </div>
+
+                <!-- Column 3 -->
+                <div>
+                    <label for="mb" class="form-label">MB</label>
+                    <input type="text" class="form-control" id="mb" placeholder="Enter MB">
+                </div>
+
+                <div>
+                    <label for="fuel_type" class="form-label">Fuel Type</label>
+                    <select class="form-select" id="fuel_type">
+                        <option value="16">16</option>
+                        <option value="24">24</option>
+                        <option value="24B20">24B20</option>
+                        <option value="24B36">24B36</option>
+                        <option value="36">36</option>
+                        <option value="36B20">36B20</option>
+                        <option value="36B36">36B36</option>
+                        <option value="40">40</option>
+                        <option value="40B20">40B20</option>
+                        <option value="40B36">40B36</option>
+                        <option value="40B50">40B50</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="notes" class="form-label">Notes</label>
+                    <input type="text" class="form-control" id="notes" placeholder="Enter Notes">
+                </div>
+
+                <div>
+                    <label for="mat_descr" class="form-label">Mat Descr</label>
+                    <input type="text" class="form-control" id="mat_descr" placeholder="Enter Mat Descr">
+                </div>
+
+                <div>
+                    <label for="total_weight_kg" class="form-label">Total WT (KG)</label>
+                    <input type="number" class="form-control" id="total_weight_kg" placeholder="Enter Total Weight">
+                </div>
+
+                <div>
+                    <label for="date_of_production" class="form-label">Date Of Production</label>
+                    <input type="date" class="form-control" id="date_of_production">
+                </div>
+
+                <div>
+                    <label for="cps_ar_bar" class="form-label">CPS AR/BAR</label>
+                    <input type="text" class="form-control" id="cps_ar_bar" placeholder="Enter CPS AR/BAR">
+                </div>
+
+                <div>
+                    <label for="drawing_no" class="form-label">Drawing NO</label>
+                    <input type="text" class="form-control" id="drawing_no" placeholder="Enter Drawing NO">
+                </div>
+
+                <div>
+                    <label for="product_images" class="form-label">Product Images</label>
+                    <input type="file" class="form-control" id="product_images">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save Data</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+.modal-dialog {
+    max-width: 70%; /* عرض کمتر برای بهینه‌سازی */
+    margin: 1rem auto;
+}
+
+.modal-content {
+    background-color: #2e333a; /* رنگ آبی نفتی */
+    color: #ffffff; /* متن سفید */
+    border: none;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.modal-body {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* چهار ستون */
+    gap: 15px; /* فاصله بین فیلدها */
+}
+
+.modal-body .form-label {
+    font-size: 0.85rem; /* کاهش اندازه فونت */
+}
+
+.modal-body input, .modal-body select {
+    padding: 8px;
+    font-size: 0.85rem;
+    width: 100%; /* پر کردن فضای ستون */
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.3); /* حاشیه نرم */
+    background-color: rgba(255, 255, 255, 0.1); /* پس‌زمینه شفاف */
+    color: #ffffff;
+}
+
+.modal-footer {
+    justify-content: flex-end;
+}
+
+@media (max-width: 992px) {
+    .modal-body {
+        grid-template-columns: repeat(2, 1fr); /* دو ستون در صفحات کوچکتر */
+    }
+}
+
+@media (max-width: 576px) {
+    .modal-body {
+        grid-template-columns: 1fr; /* یک ستون در صفحات خیلی کوچک */
+    }
+}
+.modal-body input,
+.modal-body select,
+.modal-body textarea {
+    padding: 8px;
+    font-size: 0.85rem;
+    width: 100%; /* پر کردن فضای ستون */
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* حاشیه نرم‌تر */
+    background-color: #ffffff; /* پس‌زمینه سفید */
+    color: #000000; /* متن مشکی */
+}
+

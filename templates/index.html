@@ -1,0 +1,365 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Dark Navbar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'base/styles.css' %}">
+</head>
+<body>
+<!-- Top Header for Logo -->
+<div class="top-header">
+    <div class="container">
+        <div class="logo-container">
+            <!-- Replace with your logo -->
+            <img src="{% static 'image/2.jpg' %}" alt="Your Logo">
+        </div>
+    </div>
+</div>
+
+<!-- Main Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container-fluid">
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        Select MBA
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">IRB1</a></li>
+                        <li><a class="dropdown-item" href="#">IRB2</a></li>
+                        <li><a class="dropdown-item" href="#">IRB3</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        General Ledger
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#dataEntryModal">Receipt
+                            Of Material</a></li>
+                        <li><a class="dropdown-item" href="#">File</a>
+                        </li>
+                        <li><a class="dropdown-item" href="#">Manual</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        Inventory
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Our Story</a></li>
+                        <li><a class="dropdown-item" href="#">Our Team</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        CPS/BAR Handling
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Contact Form</a></li>
+                        <li><a class="dropdown-item" href="#">Locations</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        History
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Latest Posts</a></li>
+                        <li><a class="dropdown-item" href="#">Categories</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        Previous MBRs
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">View Profile</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        Report
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Latest Posts</a></li>
+                        <li><a class="dropdown-item" href="#">Categories</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        Logbook
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Latest Posts</a></li>
+                        <li><a class="dropdown-item" href="#">Categories</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        System
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Latest Posts</a></li>
+                        <li><a class="dropdown-item" href="#">Categories</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+
+            <!-- Login/Logout Buttons -->
+            <div class="d-flex">
+                {% if user.is_authenticated %}
+                    <span class="navbar-text user-welcome me-3">Welcome, {{ user.username }}</span>
+                    <button class="btn btn-outline-light btn-login" type="button"
+                            onclick="location.href='{% url 'login' %}'">Logout
+                    </button>
+                {% else %}
+                    <button class="btn btn-outline-light btn-login me-2" type="button"
+                            onclick="location.href='{% url 'login' %}'">Login
+                    </button>
+                {% endif %}
+            </div>
+
+
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-background"
+         style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('{% static "image/1.jpg" %}');">
+    </div>
+    <div class="hero-content">
+        <h1>Welcome to Our Website</h1>
+        <p>Discover the best products and services with us.</p>
+    </div>
+</section>
+
+
+<!-- Modal Structure -->
+<form action="{% url 'save_data' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="modal fade" id="dataEntryModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Enter Receipt Data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+
+                    <!-- Column 1 -->
+                    <div>
+                        <label for="MBA" class="form-label">MBA</label>
+                        <select class="form-select" id="MBA">
+                            <option value="IR1B">IR1B</option>
+                            <!-- Other MBA choices -->
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="item_id" class="form-label">Item ID</label>
+                        <input type="text" class="form-control" id="item_id" placeholder="Enter Item ID">
+                    </div>
+
+                    <div>
+                        <label for="container_id" class="form-label">Container ID</label>
+                        <input type="text" class="form-control" id="container_id" placeholder="Enter Container ID">
+                    </div>
+
+                    <div>
+                        <label for="ic_date" class="form-label">IC Date</label>
+                        <input type="date" class="form-control" id="ic_date">
+                    </div>
+
+                    <div>
+                        <label for="ic_code" class="form-label">IC Code</label>
+                        <select class="form-select" id="ic_code">
+                            <option value="DI">DI</option>
+                            <option value="FW">FW</option>
+                            <option value="GA">GA</option>
+                            <!-- Other IC Code choices -->
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="from_mba" class="form-label">From MBA</label>
+                        <select class="form-select" id="from_mba">
+                            <option value="IR1B">IR1B</option>
+                            <!-- Other MBA choices -->
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="mdc" class="form-label">MDC</label>
+                        <select class="form-select" id="mdc">
+                            <option value="BQ1F">BQ1F</option>
+                            <option value="BQ1G">BQ1G</option>
+                            <!-- Other MDC choices -->
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="obl_code" class="form-label">OBL Code</label>
+                        <select class="form-select" id="obl_code">
+                            <option value="P">P</option>
+                            <!-- Other OBL Code choices -->
+                        </select>
+                    </div>
+
+                    <!-- Column 2 -->
+                    <div>
+                        <label for="to_mba" class="form-label">To MBA</label>
+                        <select class="form-select" id="to_mba">
+                            <option value="IR1B">IR1B</option>
+                            <!-- Other MBA choices -->
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="no_of_items" class="form-label">No. of Items</label>
+                        <input type="number" class="form-control" id="no_of_items" placeholder="Enter No. of Items">
+                    </div>
+
+                    <div>
+                        <label for="elt_code" class="form-label">ELT Code</label>
+                        <select class="form-select" id="elt_code">
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="N">N</option>
+                            <option value="P">P</option>
+                            <option value="T">T</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="uo2_wf" class="form-label">UO2 WF</label>
+                        <input type="number" class="form-control" id="uo2_wf" placeholder="Enter UO2 WF">
+                    </div>
+
+                    <div>
+                        <label for="elt_wf" class="form-label">ELT WF</label>
+                        <input type="number" class="form-control" id="elt_wf" placeholder="Enter ELT WF">
+                    </div>
+
+                    <div>
+                        <label for="enr" class="form-label">ENR</label>
+                        <input type="number" class="form-control" id="enr" placeholder="Enter ENR">
+                    </div>
+
+                    <div>
+                        <label for="iso_code" class="form-label">ISO Code</label>
+                        <input type="text" class="form-control" id="iso_code" placeholder="Enter ISO Code">
+                    </div>
+
+                    <div>
+                        <label for="iso_wf" class="form-label">ISO WF</label>
+                        <input type="number" class="form-control" id="iso_wf" placeholder="Enter ISO WF">
+                    </div>
+
+                    <div>
+                        <label for="burnup" class="form-label">Burnup</label>
+                        <input type="number" class="form-control" id="burnup" placeholder="Enter Burnup">
+                    </div>
+
+                    <!-- Column 3 -->
+                    <div>
+                        <label for="mb" class="form-label">MB</label>
+                        <input type="text" class="form-control" id="mb" placeholder="Enter MB">
+                    </div>
+
+                    <div>
+                        <label for="fuel_type" class="form-label">Fuel Type</label>
+                        <select class="form-select" id="fuel_type">
+                            <option value="16">16</option>
+                            <option value="24">24</option>
+                            <option value="24B20">24B20</option>
+                            <option value="24B36">24B36</option>
+                            <option value="36">36</option>
+                            <option value="36B20">36B20</option>
+                            <option value="36B36">36B36</option>
+                            <option value="40">40</option>
+                            <option value="40B20">40B20</option>
+                            <option value="40B36">40B36</option>
+                            <option value="40B50">40B50</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="notes" class="form-label">Notes</label>
+                        <input type="text" class="form-control" id="notes" placeholder="Enter Notes">
+                    </div>
+
+                    <div>
+                        <label for="mat_descr" class="form-label">Mat Descr</label>
+                        <input type="text" class="form-control" id="mat_descr" placeholder="Enter Mat Descr">
+                    </div>
+
+                    <div>
+                        <label for="total_weight_kg" class="form-label">Total WT (KG)</label>
+                        <input type="number" class="form-control" id="total_weight_kg" placeholder="Enter Total Weight">
+                    </div>
+
+                    <div>
+                        <label for="date_of_production" class="form-label">Date Of Production</label>
+                        <input type="date" class="form-control" id="date_of_production">
+                    </div>
+
+                    <div>
+                        <label for="cps_ar_bar" class="form-label">CPS AR/BAR</label>
+                        <input type="text" class="form-control" id="cps_ar_bar" placeholder="Enter CPS AR/BAR">
+                    </div>
+
+                    <div>
+                        <label for="drawing_no" class="form-label">Drawing NO</label>
+                        <input type="text" class="form-control" id="drawing_no" placeholder="Enter Drawing NO">
+                    </div>
+
+                    <div>
+                        <label for="product_images" class="form-label">Product Images</label>
+                        <input type="file" class="form-control" id="product_images">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save Data</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var navbar = document.getElementById('mainNavbar');
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-dark', 'shadow');
+            } else {
+                navbar.classList.remove('bg-dark', 'shadow');
+            }
+        });
+    });
+</script>
+</body>
+</html>

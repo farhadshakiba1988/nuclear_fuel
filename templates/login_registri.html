@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سیستم مدیریت نیروگاه - ورود</title>
+    <link rel="stylesheet" href="{% static 'base/login/style.css' %}">
+
+</head>
+<body style="background-image: url('{% static "image/1.png" %}');">
+<div class="login-container">
+    <div class="header">
+        <h1>سیستم مدیریت نیروگاه اتمی بوشهر</h1>
+        <p>لطفاً برای دسترسی به سیستم، اطلاعات کاربری خود را وارد نمایید</p>
+    </div>
+
+    <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="username">کد پرسنلی</label>
+            <input type="text" id="username" name="username">
+        </div>
+
+        <div class="form-group">
+            <label for="password">رمز عبور</label>
+            <input type="password" id="password" name="password"
+                   placeholder="رمز عبور خود را وارد کنید">
+        </div>
+
+        <button type="submit" class="submit-btn">ورود به سیستم</button>
+
+        <div class="security-notice">
+            توجه: این سیستم تحت نظارت است. تمامی فعالیت‌های شما ثبت و نگهداری می‌شود.
+            لطفاً پس از اتمام کار، از حساب کاربری خود خارج شوید.
+        </div>
+
+        <div class="session-timer">
+            زمان باقی‌مانده برای ورود: <span id="timer">180</span> ثانیه
+        </div>
+    </form>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        let timerElement = document.getElementById('timer');
+        let form = document.querySelector('form');
+        let inputs = form.querySelectorAll('input');
+        let submitButton = document.querySelector('.submit-btn');
+        let timeLeft = 180;
+        let lockoutTime = 120; // 2 دقیقه به ثانیه
+        let isLocked = false;
+
+        // تابع قفل کردن فرم
+        function lockForm() {
+            isLocked = true;
+            inputs.forEach(input => {
+                input.disabled = true;
+                input.style.opacity = '0.5';
+                input.style.cursor = 'not-allowed';
+            });
+            submitButton.disabled = true;
+            submitButton.style.opacity = '0.5';
+            submitButton.style.cursor = 'not-allowed';
+            submitButton.textContent = 'فرم قفل شده است';
+        }
+
+        // تابع باز کردن قفل فرم
+        function unlockForm() {
+            isLocked = false;
+            inputs.forEach(input => {
+                input.disabled = false;
+                input.style.opacity = '1';
+                input.style.cursor = 'text';
+            });
+            submitButton.disabled = false;
+            submitButton.style.opacity = '1';
+            submitButton.style.cursor = 'pointer';
+            submitButton.textContent = 'ورود به سیستم';
+
+            // شروع مجدد تایمر
+            timeLeft = 180;
+            startTimer();
+        }
+
+        // تابع اصلی تایمر
+        function startTimer() {
+            let timer = setInterval(function () {
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    lockForm();
+
+                    // شروع تایمر قفل
+                    timerElement.textContent = 'فرم قفل شده است';
+                    setTimeout(function () {
+                        unlockForm();
+                    }, lockoutTime * 1000);
+
+                    return;
+                }
+
+                timeLeft--;
+                timerElement.textContent = timeLeft;
+
+                // تغییر رنگ تایمر در زمان‌های مختلف
+                if (timeLeft <= 30) {
+                    timerElement.style.color = '#ff6347'; // قرمز
+                } else if (timeLeft <= 60) {
+                    timerElement.style.color = '#ffa500'; // نارنجی
+                }
+            }, 1000);
+        }
+
+        // شروع تایمر در لود صفحه
+        if (!isLocked) {
+            startTimer();
+        }
+
+        // اضافه کردن event listener برای جلوگیری از ارسال فرم در حالت قفل
+        form.addEventListener('submit', function (e) {
+            if (isLocked) {
+                e.preventDefault();
+                alert('فرم در حال حاضر قفل است. لطفاً صبر کنید.');
+            }
+        });
+
+        // حرکت خودکار به input بعدی در کد امنیتی
+        let securityInputs = document.querySelectorAll('.security-code input');
+        securityInputs.forEach((input, index) => {
+            input.addEventListener('input', function () {
+                if (this.value.length === 1) {
+                    if (securityInputs[index + 1] && !isLocked) {
+                        securityInputs[index + 1].focus();
+                    }
+                }
+            });
+
+            input.addEventListener('keydown', function (e) {
+                if (e.key === 'Backspace' && !this.value.length) {
+                    if (securityInputs[index - 1] && !isLocked) {
+                        securityInputs[index - 1].focus();
+                    }
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

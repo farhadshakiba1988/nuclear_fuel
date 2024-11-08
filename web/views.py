@@ -70,3 +70,7 @@ def upload_file_view(request):
     else:
         form = UploadFileForm()
     return render(request, 'upload_file.html', {'form': form})
+
+
+def chart_view(request):
+    return render(request, 'chart.html')

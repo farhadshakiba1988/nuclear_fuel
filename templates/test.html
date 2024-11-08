@@ -699,3 +699,114 @@
     </div>
 </body>
 </html>
+
+
+
+
+list
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>NPPD</title>
+    <meta content="" name="description">
+    <meta content="Author" name="MJ Maraz">
+    <link href="{% static 'assets/images/favicon.png' %}" rel="icon">
+    <link href="{% static 'assets/images/favicon.png' %}" rel="apple-touch-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'render_data/assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'render_data/assets/css/datatables.min.css' %}">
+    <link rel="stylesheet" href="{% static 'render_data/assets/css/style.css' %}">
+    <style>
+        /* تنظیمات اندازه فونت تیترها و محتوای جدول */
+        .data_table th {
+            font-size: 0.875rem; /* اندازه فونت تیترها */
+            white-space: nowrap; /* جلوگیری از تغییر خط تیترها */
+        }
+
+        .data_table td {
+            font-size: 0.875rem; /* اندازه فونت محتوای جدول */
+        }
+
+        /* تنظیمات اضافی برای جدول */
+        .data_table {
+            overflow-x: auto; /* اسکرول افقی در صورت نیاز */
+        }
+
+        /* استایل عنوان بخش بالا */
+        .header_part h4 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+<header class="header_part">
+    <img src="{% static 'assets/images/logo.png' %}" alt="" class="img-fluid">
+    <h4>NPPD</h4>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="data_table">
+                <table id="example" class="table table-striped table-bordered">
+                    <thead class="table-dark">
+                    <tr>
+                        <th>MBA</th>
+                        <th>item_id</th>
+                        <th>container_id</th>
+                        <th>ic_date</th>
+                        <th>ic_code</th>
+                        <th>from_mba</th>
+                        <th>mdc</th>
+                        <th>obl_code</th>
+                        <th>to_mba</th>
+                        <th>no_of_items</th>
+                        <th>elt_code</th>
+                        <th>uo2_wf</th>
+                        <th>elt_wf</th>
+                        <th>enr</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for receipt in receipts %}
+                    <tr id="person-{{ receipt.pk }}" class="person-row">
+                        <td>{{ receipt.MBA }}</td>
+                        <td>{{ receipt.item_id }}</td>
+                        <td>{{ receipt.container_id }}</td>
+                        <td>{{ receipt.ic_date }}</td>
+                        <td>{{ receipt.ic_code }}</td>
+                        <td>{{ receipt.from_mba }}</td>
+                        <td>{{ receipt.mdc }}</td>
+                        <td>{{ receipt.obl_code }}</td>
+                        <td>{{ receipt.to_mba }}</td>
+                        <td>{{ receipt.no_of_items }}</td>
+                        <td>{{ receipt.elt_code }}</td>
+                        <td>{{ receipt.uo2_wf }}</td>
+                        <td>{{ receipt.elt_wf }}</td>
+                        <td>{{ receipt.enr }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'render_data/assets/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'render_data/assets/js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'render_data/assets/js/datatables.min.js' %}"></script>
+<script src="{% static 'render_data/assets/js/pdfmake.min.js' %}"></script>
+<script src="{% static 'render_data/assets/js/vfs_fonts.js' %}"></script>
+<script src="{% static 'render_data/assets/js/custom.js' %}"></script>
+
+</body>
+</html>
+

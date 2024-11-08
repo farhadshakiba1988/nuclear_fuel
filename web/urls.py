@@ -11,4 +11,5 @@ urlpatterns = [
     path('', views.save_sample_data, name='save_sample_data'),
     path('success/', views.success_page, name='success_page'),
     path('upload/', views.upload_file_view, name='upload_file'),
+    path('chart/', views.chart_view, name='chart'),
 ]

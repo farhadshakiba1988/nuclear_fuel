@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>NPPD</title>
+    <meta content="" name="description">
+    <meta content="Author" name="MJ Maraz">
+    <link href="{% static 'assets/images/favicon.png' %}" rel="icon">
+    <link href="{% static 'assets/images/favicon.png' %}" rel="apple-touch-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'render_data/assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'render_data/assets/css/datatables.min.css' %}">
+    <link rel="stylesheet" href="{% static 'render_data/assets/css/style.css' %}">
+</head>
+
+<body>
+<header class="header_part">
+    <img src="{% static 'assets/images/logo.png' %}" alt="" class="img-fluid">
+    <h4>NPPD</h4>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="data_table">
+                <table id="example" class="table table-striped table-bordered">
+                    <thead class="table-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Office</th>
+                        <th>Age</th>
+                        <th>Start date</th>
+                        <th>Salary</th>
+                        <!-- پنج گزینه اول -->
+                        <th>Option 1</th>
+                        <th>Option 2</th>
+                        <th>Option 3</th>
+                        <th>Option 4</th>
+                        <th>Option 5</th>
+                        <!-- پنج گزینه دوم -->
+                        <th>Option 6</th>
+                        <th>Option 7</th>
+                        <th>Option 8</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for receipt in receipts %}
+                    <tr id="person-{{ receipt.pk }}" class="person-row">
+                        <td>{{ receipt.MBA }}</td>
+                        <td>{{ receipt.item_id }}</td>
+                        <td>{{ receipt.container_id }}</td>
+                        <td>{{ receipt.ic_date }}</td>
+                        <td>{{ receipt.ic_code }}</td>
+                        <td>{{ receipt.from_mba }}</td>
+                        <!-- پنج گزینه اول -->
+                        <td>{{ receipt.mdc }}</td>
+                        <td>{{ receipt.obl_code }}</td>
+                        <td>{{ receipt.to_mba }}</td>
+                        <td>{{ receipt.no_of_items }}</td>
+                        <td>{{ receipt.elt_code }}</td>
+                        <!-- پنج گزینه دوم -->
+                        <td>{{ receipt.uo2_wf }}</td>
+                        <td>{{ receipt.elt_wf }}</td>
+                        <td>{{ receipt.enr }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'render_data/assets/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'render_data/assets/js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'render_data/assets/js/datatables.min.js' %}"></script>
+<script src="{% static 'render_data/assets/js/pdfmake.min.js' %}"></script>
+<script src="{% static 'render_data/assets/js/vfs_fonts.js' %}"></script>
+<script src="{% static 'render_data/assets/js/custom.js' %}"></script>
+
+</body>
+</html>

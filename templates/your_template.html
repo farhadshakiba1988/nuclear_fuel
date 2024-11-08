@@ -1,0 +1,212 @@
+<!-- your_template.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Modal Form</title>
+    <!-- اضافه کردن Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- دکمه‌ای برای باز کردن modal -->
+
+<!-- modal -->
+<form action="{{ request.path }}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="modal fade" id="dataEntryModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Enter Receipt Data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <!-- Column 1 -->
+                    <div>
+                        <label for="MBA" class="form-label">MBA</label>
+                        <select class="form-select" name="MBA" id="MBA">
+                            <option value="IR1B">IR1B</option>
+                            <!-- Other MBA choices -->
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="item_id" class="form-label">Item ID</label>
+                        <input type="text" class="form-control" name="item_id" id="item_id" placeholder="Enter Item ID">
+                    </div>
+
+                    <div>
+                        <label for="container_id" class="form-label">Container ID</label>
+                        <input type="text" class="form-control" name="container_id" id="container_id" placeholder="Enter Container ID">
+                    </div>
+
+                    <div>
+                        <label for="ic_date" class="form-label">IC Date</label>
+                        <input type="date" class="form-control" name="ic_date" id="ic_date">
+                    </div>
+
+                    <div>
+                        <label for="ic_code" class="form-label">IC Code</label>
+                        <select class="form-select" name="ic_code" id="ic_code">
+                            <option value="DI">DI</option>
+                            <option value="FW">FW</option>
+                            <option value="GA">GA</option>
+                            <!-- Other IC Code choices -->
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="from_mba" class="form-label">From MBA</label>
+                        <select class="form-select" name="from_mba" id="from_mba">
+                            <option value="IR1B">IR1B</option>
+                            <!-- Other MBA choices -->
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="mdc" class="form-label">MDC</label>
+                        <select class="form-select" name="mdc" id="mdc">
+                            <option value="BQ1F">BQ1F</option>
+                            <option value="BQ1G">BQ1G</option>
+                            <!-- Other MDC choices -->
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="obl_code" class="form-label">OBL Code</label>
+                        <select class="form-select" name="obl_code" id="obl_code">
+                            <option value="P">P</option>
+                            <!-- Other OBL Code choices -->
+                        </select>
+                    </div>
+
+                    <!-- Column 2 -->
+                    <div>
+                        <label for="to_mba" class="form-label">To MBA</label>
+                        <select class="form-select" name="to_mba" id="to_mba">
+                            <option value="IR1B">IR1B</option>
+                            <!-- Other MBA choices -->
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="no_of_items" class="form-label">No. of Items</label>
+                        <input type="number" class="form-control" name="no_of_items" id="no_of_items" placeholder="Enter No. of Items">
+                    </div>
+
+                    <div>
+                        <label for="elt_code" class="form-label">ELT Code</label>
+                        <select class="form-select" name="elt_code" id="elt_code">
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="N">N</option>
+                            <option value="P">P</option>
+                            <option value="T">T</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="uo2_wf" class="form-label">UO2 WF</label>
+                        <input type="number" class="form-control" name="uo2_wf" id="uo2_wf" placeholder="Enter UO2 WF">
+                    </div>
+
+                    <div>
+                        <label for="elt_wf" class="form-label">ELT WF</label>
+                        <input type="number" class="form-control" name="elt_wf" id="elt_wf" placeholder="Enter ELT WF">
+                    </div>
+
+                    <div>
+                        <label for="enr" class="form-label">ENR</label>
+                        <input type="number" class="form-control" name="enr" id="enr" placeholder="Enter ENR">
+                    </div>
+
+                    <div>
+                        <label for="iso_code" class="form-label">ISO Code</label>
+                        <input type="text" class="form-control" name="iso_code" id="iso_code" placeholder="Enter ISO Code">
+                    </div>
+
+                    <div>
+                        <label for="iso_wf" class="form-label">ISO WF</label>
+                        <input type="number" class="form-control" name="iso_wf" id="iso_wf" placeholder="Enter ISO WF">
+                    </div>
+
+                    <div>
+                        <label for="burnup" class="form-label">Burnup</label>
+                        <input type="number" class="form-control" name="burnup" id="burnup" placeholder="Enter Burnup">
+                    </div>
+
+                    <!-- Column 3 -->
+                    <div>
+                        <label for="mb" class="form-label">MB</label>
+                        <input type="text" class="form-control" name="mb" id="mb" placeholder="Enter MB">
+                    </div>
+
+                    <div>
+                        <label for="fuel_type" class="form-label">Fuel Type</label>
+                        <select class="form-select" name="fuel_type" id="fuel_type">
+                            <option value="16">16</option>
+                            <option value="24">24</option>
+                            <option value="24B20">24B20</option>
+                            <option value="24B36">24B36</option>
+                            <option value="36">36</option>
+                            <option value="36B20">36B20</option>
+                            <option value="36B36">36B36</option>
+                            <option value="40">40</option>
+                            <option value="40B20">40B20</option>
+                            <option value="40B36">40B36</option>
+                            <option value="40B50">40B50</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="notes" class="form-label">Notes</label>
+                        <input type="text" class="form-control" name="notes" id="notes" placeholder="Enter Notes">
+                    </div>
+
+                    <div>
+                        <label for="mat_descr" class="form-label">Mat Descr</label>
+                        <input type="text" class="form-control" name="mat_descr" id="mat_descr" placeholder="Enter Mat Descr">
+                    </div>
+
+                    <div>
+                        <label for="total_weight_kg" class="form-label">Total WT (KG)</label>
+                        <input type="number" class="form-control" name="total_weight_kg" id="total_weight_kg" placeholder="Enter Total Weight">
+                    </div>
+
+                    <div>
+                        <label for="date_of_production" class="form-label">Date Of Production</label>
+                        <input type="date" class="form-control" name="date_of_production" id="date_of_production">
+                    </div>
+
+                    <div>
+                        <label for="cps_ar_bar" class="form-label">CPS AR/BAR</label>
+                        <input type="text" class="form-control" name="cps_ar_bar" id="cps_ar_bar" placeholder="Enter CPS AR/BAR">
+                    </div>
+
+                    <div>
+                        <label for="drawing_no" class="form-label">Drawing NO</label>
+                        <input type="text" class="form-control" name="drawing_no" id="drawing_no" placeholder="Enter Drawing NO">
+                    </div>
+
+                    <div>
+                        <label for="product_images" class="form-label">Product Images</label>
+                        <input type="file" class="form-control" name="product_images" id="product_images">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save Data</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- اضافه کردن Bootstrap JS و jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

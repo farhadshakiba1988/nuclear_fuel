@@ -15,7 +15,7 @@
         <p>لطفاً برای دسترسی به سیستم، اطلاعات کاربری خود را وارد نمایید</p>
     </div>
 
-    <form action="{% url 'login' %}" method="POST">
+    <form action="{% url 'conf:login' %}" method="POST">
         {% csrf_token %}
         <div class="form-group">
             <label for="username">کد پرسنلی</label>

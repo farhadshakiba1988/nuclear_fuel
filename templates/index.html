@@ -50,7 +50,9 @@
                             Of Material</a></li>
                         <li><a class="dropdown-item" href="#">File</a>
                         </li>
-                        <li><a class="dropdown-item" href="#">Manual</a>
+                        <li><a class="dropdown-item" href="{% url 'conf:upload_file' %}">Manual</a>
+                        </li>
+                        <li><a class="dropdown-item" href="{% url 'conf:receipt_list' %}">Show Data</a>
                         </li>
                     </ul>
                 </li>
@@ -127,11 +129,11 @@
                 {% if user.is_authenticated %}
                     <span class="navbar-text user-welcome me-3">Welcome, {{ user.username }}</span>
                     <button class="btn btn-outline-light btn-login" type="button"
-                            onclick="location.href='{% url 'login' %}'">Logout
+                            onclick="location.href='{% url 'conf:login' %}'">Logout
                     </button>
                 {% else %}
                     <button class="btn btn-outline-light btn-login me-2" type="button"
-                            onclick="location.href='{% url 'login' %}'">Login
+                            onclick="location.href='{% url 'conf:login' %}'">Login
                     </button>
                 {% endif %}
             </div>
@@ -154,7 +156,7 @@
 
 
 <!-- Modal Structure -->
-<form action="{% url 'save_data' %}" method="POST" enctype="multipart/form-data">
+<form action="{{ request.path }}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="modal fade" id="dataEntryModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -338,10 +340,12 @@
                         <input type="file" class="form-control" id="product_images">
                     </div>
                 </div>
+                {{ form.as_p }}
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save Data</button>
                 </div>
+
             </div>
         </div>
     </div>

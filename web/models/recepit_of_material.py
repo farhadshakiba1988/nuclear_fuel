@@ -1,7 +1,8 @@
 from django.db import models
 
 
-class Recepit(models.Model):
+class Receipt(models.Model):
+
     MBA_CHOICES = [
         ('IR1B', 'IR1B'),
         ('IR2B', 'IR2B'),

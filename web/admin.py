@@ -1,5 +1,7 @@
 from django.contrib import admin
 
-from web.models import Recepit
+from .models import Receipt, Person, UploadedFile
 
-admin.site.register(Recepit)
+admin.site.register(Receipt)
+admin.site.register(Person)
+admin.site.register(UploadedFile)

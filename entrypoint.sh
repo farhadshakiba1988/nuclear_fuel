@@ -16,4 +16,4 @@ python manage.py collectstatic --noinput
 echo "Static files collected."
 
 echo "Starting Gunicorn server..."
-gunicorn audit.wsgi:application -c gunicorn.conf.py
+gunicorn nuclear_fuel.wsgi:application -c gunicorn.conf.py

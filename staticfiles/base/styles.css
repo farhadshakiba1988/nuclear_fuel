@@ -1,0 +1,258 @@
+:root {
+    --primary-dark: #1a1a1a;
+    --accent-color: #0d6efd;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+.top-header {
+    background-color: #ffffff;
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .05);
+}
+
+.logo-container {
+    height: 60px; /* افزایش ارتفاع کانتینر */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-container img {
+    max-height: 200%; /* محدودیت حداکثر ارتفاع برای تصویر */
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo-container img:hover {
+    transform: scale(1.05);
+}
+
+.navbar {
+    background-color: var(--primary-dark);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+}
+
+.nav-link {
+    color: #ffffff !important;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none; /* حذف خط زیر */
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.navbar-nav {
+    justify-content: flex-start; /* آیتم‌های نوار ناوبری از سمت چپ شروع می‌شوند */
+}
+
+.navbar-collapse {
+    display: flex;
+    justify-content: space-between; /* فاصله بین آیتم‌های نوار ناوبری و متن خوش‌آمدگویی */
+}
+
+.user-welcome {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: right;
+    margin-left: auto; /* انتقال به سمت راست */
+}
+
+.d-flex.ms-auto {
+    justify-content: flex-end;
+}
+
+.nav-link i {
+    margin-right: 5px;
+}
+
+.nav-link:hover {
+    color: var(--accent-color) !important;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.nav-link:active {
+    transform: translateY(0);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #ffffff !important;
+}
+
+.dropdown-menu {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
+    background-color: var(--primary-dark);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-item {
+    color: #ffffff;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(13, 110, 253, 0.1);
+    color: var(--accent-color);
+}
+
+
+.btn-login {
+    border-radius: 20px;
+    padding: 8px 20px;
+    transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+}
+
+/* Hero Section Styles */
+.hero-section {
+    position: relative;
+    height: 80vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.hero-background {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    filter: brightness(0.9) contrast(1.1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transition: filter 0.5s ease-in-out;
+}
+
+.hero-background:hover {
+    filter: brightness(1.1) contrast(1.3);
+}
+
+.hero-content {
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.user-welcome {
+    color: #ffffff; /* رنگ سفید */
+    font-size: 1.25rem; /* اندازه بزرگ‌تر */
+    font-weight: bold; /* ضخیم‌تر کردن متن */
+}
+
+
+
+/* modal */
+.modal-dialog {
+    max-width: 70%; /* عرض کمتر برای بهینه‌سازی */
+    margin: 1rem auto;
+}
+
+.modal-content {
+    background-color: #2e333a; /* رنگ آبی نفتی */
+    color: #ffffff; /* متن سفید */
+    border: none;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.modal-body {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* چهار ستون */
+    gap: 15px; /* فاصله بین فیلدها */
+}
+
+.modal-body .form-label {
+    font-size: 0.85rem; /* کاهش اندازه فونت */
+}
+
+.modal-body input, .modal-body select {
+    padding: 8px;
+    font-size: 0.85rem;
+    width: 100%; /* پر کردن فضای ستون */
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.3); /* حاشیه نرم */
+    background-color: rgba(255, 255, 255, 0.1); /* پس‌زمینه شفاف */
+    color: #ffffff;
+}
+
+.modal-footer {
+    justify-content: flex-end;
+}
+
+@media (max-width: 992px) {
+    .modal-body {
+        grid-template-columns: repeat(2, 1fr); /* دو ستون در صفحات کوچکتر */
+    }
+}
+
+@media (max-width: 576px) {
+    .modal-body {
+        grid-template-columns: 1fr; /* یک ستون در صفحات خیلی کوچک */
+    }
+}
+.modal-body input,
+.modal-body select,
+.modal-body textarea {
+    padding: 8px;
+    font-size: 0.85rem;
+    width: 100%; /* پر کردن فضای ستون */
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* حاشیه نرم‌تر */
+    background-color: #ffffff; /* پس‌زمینه سفید */
+    color: #000000; /* متن مشکی */
+}
+
+
+
+

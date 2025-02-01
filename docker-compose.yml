@@ -4,17 +4,19 @@ services:
     build:
       context: .
     command: [ "/wait-for-it.sh", "db", "/entrypoint.sh" ]
-    expose:
+    ports:
       - 8000
     volumes:
-      - .:/app
       - ./staticfiles:/app/staticfiles
+      - ./media:/app/media
     depends_on:
       - db
     environment:
       - POSTGRES_DB=test
       - POSTGRES_USER=test
       - POSTGRES_PASSWORD=123@456
+    networks:
+      - backend
   db:
     image: postgres:16-alpine
     healthcheck:
@@ -30,6 +32,8 @@ services:
       - POSTGRES_DB=test
       - POSTGRES_USER=test
       - POSTGRES_PASSWORD=123@456
+    networks:
+      - backend
 
   nginx:
     build: ./nginx
@@ -40,11 +44,15 @@ services:
       - app
     volumes:
       - ./nginx:/etc/nginx/conf.d
-      - ./static:/app/static
+      - ./staticfiles:/app/staticfiles
       - ./media:/app/media
-
+    networks:
+      - backend
 
 volumes:
   static_volume:
-  media_volume:
   postgres-data:
+
+networks:
+  backend:
+    driver: bridge
